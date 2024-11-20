@@ -1,9 +1,9 @@
-name: air-quality-daily
+name: air-quality-daily-improved
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '11 6 * * *'
+    - cron: '11 18 * * *'
 
 jobs:
   schedule_pipelines:
@@ -33,8 +33,8 @@ jobs:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
         run: |
           cd notebooks/ch03
-          jupyter nbconvert --to notebook --execute 2_air_quality_feature_pipeline.ipynb
-          jupyter nbconvert --to notebook --execute 4_air_quality_batch_inference.ipynb
+          jupyter nbconvert --to notebook --execute 2_improved.ipynb
+          jupyter nbconvert --to notebook --execute 4_improved.ipynb
 
       - name: github pages publish
         uses: stefanzweifel/git-auto-commit-action@v5
